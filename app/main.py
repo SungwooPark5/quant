@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Body
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import Annotated
 
@@ -25,3 +25,11 @@ TICKERS = [
 async def get_tickers() -> list[TickerBase]:
 
     return [TickerBase(**t) for t in TICKERS]
+
+
+@app.get("/tickers/{ticker_id}")
+async def get_ticker_by_id(ticker_id: int) -> TickerBase:
+    ticker = next((TickerBase(**t) for t in TICKERS if t["id"] == ticker_id), None)
+    if ticker is None:
+        raise HTTPException(status_code=404, detail="Ticker not found")
+    return ticker

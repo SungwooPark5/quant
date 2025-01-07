@@ -6,14 +6,14 @@ from sqlmodel import Field, Relationship, SQLModel
 
 # Enum
 class CountryEnum(Enum):
-    USA = 1
-    KOREA = 2
+    USA = "USA"
+    KOREA = "KOR"
 
 
 # Models
 class TickerBase(SQLModel):
     name: str = Field(max_length=30)
-    country: str = CountryEnum
+    country: CountryEnum
 
 
 class Ticker(TickerBase, table=True):
