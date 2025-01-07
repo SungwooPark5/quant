@@ -4,6 +4,8 @@ from typing import Annotated
 
 from datetime import datetime
 
+from .models import CountryEnum, TickerBase
+
 app = FastAPI()
 
 
@@ -12,21 +14,14 @@ async def root():
     return {"message": "Hello World"}
 
 
-class StockPrice(BaseModel):
-    datetime: Annotated[datetime, Body()]
-    ticker: str
-    price: float
+TICKERS = [
+    {"id": 1, "name": "SPY", "country": CountryEnum.USA},
+    {"id": 2, "name": "TLT", "country": CountryEnum.USA},
+    {"id": 3, "name": "IWM", "country": CountryEnum.USA},
+]
 
 
-@app.get("/stockprice", response_model=StockPrice)
-async def get_stock_price(ticker: str):
+@app.get("/tickers")
+async def get_tickers() -> list[TickerBase]:
 
-    data = {
-        "datetime": datetime.now(),
-        "ticker": ticker,
-        "price": 1000,
-    }
-
-    stockprice = StockPrice(**data)
-
-    return stockprice
+    return [TickerBase(**t) for t in TICKERS]
