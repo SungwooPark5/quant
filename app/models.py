@@ -25,13 +25,14 @@ class TickerCreate(TickerBase):
 
 class Ticker(TickerBase, table=True):
     id: int = Field(default=None, primary_key=True)
-    # back_populates를 이용해 연관된 정보를 받아올 수 있음
+    # back_populates를 이용해 이름으로 연결된된 정보를 받아올 수 있음
     prices: list["TickerPrice"] = Relationship(back_populates="ticker")
 
 
 class TickerPriceBase(SQLModel):
     date: date
     price: float
+    # 외래키 설정
     ticker_id: int = Field(foreign_key="ticker.id")
 
 
