@@ -1,11 +1,15 @@
 from fastapi import FastAPI, HTTPException, Depends
+from fastapi.routing import APIRoute
 from sqlmodel import Session, select
 
-from .models import CountryEnum, TickerBase, TickerCreate, Ticker
+from app.api.main import api_router
+from .models import TickerCreate, Ticker
 from .database import get_session
 
 
 app = FastAPI()
+
+app.include_router(api_router)
 
 
 @app.get("/")
