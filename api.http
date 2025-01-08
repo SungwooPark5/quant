@@ -1,13 +1,10 @@
-POST http://localhost:8000/tickers
-Content-Type: application/json
-
-{
-    "name": "IEF",
-    "country": "USA"
-}
 
 ###
 GET http://localhost:8000/tickers
+
+###
+GET http://localhost:8000/tickers/1
+
 
 ###
 POST http://localhost:8000/tickers
@@ -16,4 +13,22 @@ Content-Type: application/json
 {
     "name": "IEF",
     "country": "usa"
+}
+
+###
+POST http://localhost:8000/tickers
+Content-Type: application/json
+
+{
+    "name": "069500.KS", 
+    "country": "kor"
+}
+
+###
+POST http://localhost:8000/tickers
+Content-Type: application/json
+
+{
+    "name": "SPY", 
+    "country": "USA"
 }
