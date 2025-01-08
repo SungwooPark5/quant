@@ -3,7 +3,7 @@
 GET http://localhost:8000/tickers
 
 ###
-GET http://localhost:8000/tickers/1
+GET http://localhost:8000/tickers/4
 
 
 ###

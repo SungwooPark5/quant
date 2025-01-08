@@ -1,18 +1,11 @@
 from fastapi import FastAPI, HTTPException, Depends
-from contextlib import asynccontextmanager
 from sqlmodel import Session, select
 
 from .models import CountryEnum, TickerBase, TickerCreate, Ticker
-from .database import init_db, get_session
+from .database import get_session
 
 
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    init_db()
-    yield
-
-
-app = FastAPI(lifespan=lifespan)
+app = FastAPI()
 
 
 @app.get("/")

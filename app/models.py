@@ -39,9 +39,3 @@ class TickerPriceBase(SQLModel):
 class TickerPrice(TickerPriceBase, table=True):
     id: int = Field(default=None, primary_key=True)
     ticker: Ticker = Relationship(back_populates="prices")
-
-
-# class StockPrice(SQLModel, table=True):
-#     date: date
-#     # stock: Stock = Relationship()
-#     price: float
