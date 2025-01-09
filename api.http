@@ -35,4 +35,7 @@ Content-Type: application/json
 
 
 ###
-GET http://localhost:8000/ticker/test
+GET http://localhost:8000/ticker/
+
+###
+GET http://localhost:8000/tickers/price/spy

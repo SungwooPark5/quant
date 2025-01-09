@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from app.api.routes import ticker
+from app.api.routes import tickers
 
 api_router = APIRouter()
-api_router.include_router(ticker.router)
+api_router.include_router(tickers.router)
